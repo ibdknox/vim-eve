@@ -14,8 +14,7 @@ if get(g:, 'eve_highlight_markdown', 0)
     unlet! b:current_syntax
     syntax include @raweve syntax/raweve.vim
 
-    syntax region eveLineCode start='^    ' end='$' containedin=@markdown contains=@raweve
-    syntax region eveBlockCode start='\v^(```|\~\~\~)' end='\v^(```|\~\~\~)' containedin=@markdown contains=@raweve
+    syntax region eveBlockCode start='\v^\s*(disabled|search|commit|bind|watch)' end='\v^\s*(end)' containedin=@markdown contains=@raweve
 else
     unlet! b:current_syntax
     syntax include @raweve syntax/raweve.vim
@@ -23,9 +22,9 @@ else
     syntax region eveMarkdownComment start="\%^" end="\%$" contains=eveEmptyMarkdown,eveBeginEndZone
     if get(g:, 'eve_fold_code', 0)
         setlocal foldmethod=syntax
-        syntax region eveBeginEndZone start='\v^(```|\~\~\~)' end='\v^(```|\~\~\~)' transparent fold keepend contained contains=@raweve,eveMarkdownCommentMarkers
+        syntax region eveBeginEndZone start='\v^\s*(disabled|search|commit|bind|watch)' end='\v^\s*(end)' transparent fold keepend contained contains=@raweve,eveMarkdownCommentMarkers
     else
-        syntax region eveBeginEndZone start='\v^(```|\~\~\~)' end='\v^(```|\~\~\~)' keepend contained contains=@raweve,eveMarkdownCommentMarkers
+        syntax region eveBeginEndZone start='\v^\s*(disabled|search|commit|bind|watch)' end='\v^\s*(end)' keepend contained contains=@raweve,eveMarkdownCommentMarkers
     endif
     if get(g:, 'eve_fold_empty', 0)
         setlocal foldmethod=expr

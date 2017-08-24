@@ -2,7 +2,7 @@ if exists("b:current_syntax")
     finish
 endif
 
-syntax keyword eveAction match search bind commit
+syntax keyword eveAction disabled watch project search bind commit end
 syntax keyword eveConditional if then else
 syntax keyword evePrefixOp not is
 
